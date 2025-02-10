@@ -1,0 +1,118 @@
+(always put images and other media outside src i.e. in the public folder else they will be compressed and there quality may degrade and vite build state will lag due to large files under src or src/assets)
+
+1. create vite project: 
+  i. npm create vite@latest
+  ii. ✔ Project name: … hotel-booking-app-2
+  iii. ✔ Select a framework: › React
+  iv.  ✔ Select a variant: › JavaScript (but i used "Javascript+SWG")
+
+  Now run:
+  cd hotel-booking-app-2
+  npm install
+
+
+2. install tailwind (refer: https://tailwindcss.com/docs/installation/using-vite )
+ i. npm install tailwindcss @tailwindcss/vite
+ ii. add extra code lines in vite.config.js : 
+    import { defineConfig } from 'vite'
+    import react from '@vitejs/plugin-react'
+    import tailwindcss from '@tailwindcss/vite'
+
+    export default defineConfig({
+      plugins: [react(), tailwindcss()],
+    })
+
+
+  iii. Import tailwindcss inside main css file eg: "index.css":
+      @import "tailwindcss";
+
+3. add extra lines to vite.config.js :
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+
+export default defineConfig({
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+});
+
+5. create file or in existing "jsconfig.json" or "tsconfig.json" file add these lines:
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  }
+} 
+
+
+4. Configure project for shadcn:
+ npx shadcn@canary init
+
+ use following config:
+  ✔ Which color would you like to use as the base color? › Neutral
+  ✔ Would you like to use CSS variables for theming? … no / yes
+  ✔ How would you like to proceed? › Use --legacy-peer-deps
+
+5. Eg. to add a buttom component from shadcn:
+  i. npx shadcn@canary add button
+  ii. ✔ How would you like to proceed? › Use --legacy-peer-deps
+  iii. now can use Button tag or ther components of shadcn, make sure to install its dependency and import it from components/ui
+
+6. To use dark these just add className="dark" inside the top level component/tag, eg:
+  <h1 className='dark bg-background'>Hello World</h1>
+
+7. currently not supporting dark theme so removing these lines from index.css:
+    i. @custom-variant dark (&:is(.dark *));
+    ii. 
+.dark {
+  --background: hsl(0 0% 3.9%);
+  --foreground: hsl(0 0% 98%);
+  --card: hsl(0 0% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(0 0% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+  --primary: hsl(0 0% 98%);
+  --primary-foreground: hsl(0 0% 9%);
+  --secondary: hsl(0 0% 14.9%);
+  --secondary-foreground: hsl(0 0% 98%);
+  --muted: hsl(0 0% 14.9%);
+  --muted-foreground: hsl(0 0% 63.9%);
+  --accent: hsl(0 0% 14.9%);
+  --accent-foreground: hsl(0 0% 98%);
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+  --border: hsl(0 0% 14.9%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(0 0% 83.1%);
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(280 65% 60%);
+  --chart-5: hsl(340 75% 55%);
+}
+
+
+8. (Optional but good for prod ready website) inside public folder create site.webmanifest: 
+  this contain info about website. (Specilaly in Mobiles)when we add this website as app icon in homepage then this give all the info + icon for app
+
+9. Setup index.html
+
+10. can access any file or folder inside public by /{file/folder_name}
+
+11. Creating extra folder and files and storing the required media and files inside public
+
+12. use "rafce" to generate basic react arrow function component boilerplate code.
+
+13. after creating a component (eg . inside ./app) use it by typing like this: "<App" in sequence so that import from ./app option appers.
+  finally: 
+  import React from 'react'
+
+  inside return of main.jsx:
+  <App />
