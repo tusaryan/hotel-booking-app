@@ -116,3 +116,13 @@ export default defineConfig({
 
   inside return of main.jsx:
   <App />
+
+14 Shortcuts:
+  #logo-wrapper>img to --> <div id="logo-wrapper"><img src="" alt="" /></div>
+  #auth  -->  <div id="auth"></div>
+  .mb-4.space-y-1 --> <div className="mb-4 space-y-1"></div>
+  Problems: 
+  (correct)-> className='grid grid-cols-[repeat(auto-fill,_minmax(190px,1fr))] py-4 gap-6' --> even a gap before "1fr", "(190px, 1fr)" <-(wrong) can put everything in column instead of row arrangement.
+
+15. Adding Library "dayJS" [to install use command: npm i dayjs ]: 
+    using to get the current year, and to perform days count calculations b/w two dates, etc.
