@@ -1,3 +1,3 @@
 # hotel-booking-app
- AirBnb Clone
+ AirBnb Clone (Full Stack app)
 (Currently working on it)
