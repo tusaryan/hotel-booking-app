@@ -6,5 +6,5 @@ export function cn(...inputs) {
 }
 
 export function getAssetPath(name) {
-  return `./assets/${name}`;
+  return `/assets/${name}`;
 }

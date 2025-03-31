@@ -1,0 +1,2 @@
+// rafce -> to generate bolier plate code for react
+overflow-x-auto -> to fix any overflow or ui break
